@@ -2,7 +2,7 @@ import pygame
 import random
 
 # Inicializar pygame
-pygame.init()
+pygame
 
 # Configuración de la pantalla
 WIDTH, HEIGHT = 800, 600
