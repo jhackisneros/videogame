@@ -17,3 +17,4 @@ class rapido(monstruo):
         super().__init__(ataque,vida,destreza,velocidad)
     def __str__(self):
         return super().__str__()
+class 
