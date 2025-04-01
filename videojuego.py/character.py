@@ -1,4 +1,4 @@
-from .entity import entity  # Importa la clase entity
+from entity import entity  # Importa la clase entity
 
 class character(entity):  # Hereda de entity
     def __init__(self, x, y, image, health):
