@@ -1,3 +1,5 @@
+import time
+
 class Game:
     def __init__(self, title, width, height):
         """
@@ -7,6 +9,7 @@ class Game:
         self.width = width
         self.height = height
         self.running = False
+        self.frame_count = 0  # Contador de fotogramas
 
     def start(self):
         """
@@ -31,21 +34,25 @@ class Game:
             self.handle_events()
             self.update()
             self.render()
+            time.sleep(1 / 60)  # Simula 60 FPS
 
     def handle_events(self):
         """
         Maneja los eventos del juego (entrada del usuario, etc.).
         """
-        pass
+        user_input = input("Presiona 'q' para salir: ").strip().lower()
+        if user_input == 'q':
+            self.stop()
 
     def update(self):
         """
         Actualiza la lógica del juego.
         """
-        pass
+        self.frame_count += 1
+        print(f"Actualizando lógica del juego. Fotograma: {self.frame_count}")
 
     def render(self):
         """
         Renderiza los elementos del juego en pantalla.
         """
-        pass
+        print(f"Renderizando el juego en {self.width}x{self.height}. Fotograma: {self.frame_count}")
