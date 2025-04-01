@@ -36,7 +36,7 @@ def main():
                 else:  # 'right'
                     x, y = screen_width, random.randint(0, screen_height)
 
-                opponent = Opponent(name="Enemy", health=100, x=x, y=y)
+                opponent = opponent(name="Enemy", health=100, x=x, y=y)
                 opponents.append(opponent)
 
         screen.fill((0, 0, 0))  # Clear the screen with black
