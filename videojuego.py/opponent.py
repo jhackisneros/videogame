@@ -1,19 +1,26 @@
+import pygame
+import random
 from character import Character
 
-class Opponent(Character):
-    def __init__(self, name, health, is_star=False):
-        super().__init__(name, health)
-        self.is_star = is_star
+class Opponent:
+    def __init__(self, name, health, x, y):
+        self.name = name
+        self.health = health
+        self.x = x
+        self.y = y
+        self.speed = 2
 
-    def move(self, direction):
-        """
-        Moves the opponent in the specified direction.
-        :param direction: str - The direction to move (e.g., 'up', 'down', 'left', 'right').
-        """
-        print(f"{self.name} moves {direction}.")
+    def move_towards_center(self, screen_width, screen_height):
+        center_x, center_y = screen_width // 2, screen_height // 2
+        if self.x < center_x:
+            self.x += self.speed
+        elif self.x > center_x:
+            self.x -= self.speed
+        if self.y < center_y:
+            self.y += self.speed
+        elif self.y > center_y:
+            self.y -= self.speed
 
-    def shoot(self):
-        """
-        Makes the opponent shoot.
-        """
-        print(f"{self.name} shoots!")
+    def draw(self, screen):
+        pygame.draw.circle(screen, (255, 0, 0), (self.x, self.y), 20)
+
