@@ -8,18 +8,20 @@ class Opponent:
         self.health = health
         self.x = x
         self.y = y
-        self.speed = 2
+        self.speed = 2  # Base speed
 
-    def move_towards_center(self, screen_width, screen_height):
-        center_x, center_y = screen_width // 2, screen_height // 2
-        if self.x < center_x:
-            self.x += self.speed
-        elif self.x > center_x:
-            self.x -= self.speed
-        if self.y < center_y:
-            self.y += self.speed
-        elif self.y > center_y:
-            self.y -= self.speed
+    def move_towards_player(self, player_x, player_y, player_speed):
+        # Enemies are 3 times slower than the player
+        adjusted_speed = player_speed / 3
+
+        if self.x < player_x:
+            self.x += adjusted_speed
+        elif self.x > player_x:
+            self.x -= adjusted_speed
+        if self.y < player_y:
+            self.y += adjusted_speed
+        elif self.y > player_y:
+            self.y -= adjusted_speed
 
     def draw(self, screen):
         pygame.draw.circle(screen, (255, 0, 0), (self.x, self.y), 20)
